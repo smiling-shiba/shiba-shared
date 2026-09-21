@@ -31,6 +31,7 @@ Status: parked until SS-02 is proven. Decide O-12 (how MPS runs rules) first.
 
 ## Later / Ideas
 
+- [ ] `SH-0005` Talk through packs as single files and mod layering; decide what to build. Notes: [design/packs-and-modding.md](design/packs-and-modding.md).
 - [ ] `SH-0005` Decide the licence split: code, base cards, base art, premium art. (O-07)
 - [ ] `SH-0006` Set up a dev-only Flipt container plus OpenFeature adapter. (Needs package approval.)
 - [ ] `SH-0007` Playtest the siege clock length. Start at 3 turns. (O-03)
