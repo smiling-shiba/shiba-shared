@@ -16,7 +16,7 @@ Pack = policy (code) + templates (YAML) + assets      lives in a game's own repo
    |       +-- local server (Node + Colyseus sidecar): authoritative for local games
    |
    +-- shiba-mps (Elixir/Phoenix): official multiplayer
-           loads the signed policy into the BEAM; authoritative for official matches
+           its own Elixir rules (private, D-42); authoritative for official matches
            also: accounts, matchmaking, seasons, entitlements, pack registry
 ```
 
