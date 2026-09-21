@@ -8,12 +8,12 @@ Convention: [engineering/backlog-and-ids.md](engineering/backlog-and-ids.md). Ke
 
 ### SS-01: Rules contract & validation
 Goal: a game's rules live in a policy (code) written with the `shiba-sdk` SDK; `shiba-tools` (`sht`) validates YAML templates against the policy's contract and signs packs for official use.
-Repos: `shiba-sdk` (SC-), `shiba-tools` (ST-).
+Repos: `shiba-sdk` (SK-), `shiba-tools` (ST-).
 Status: in progress and the current focus. The toolset is built and tested: `sht validate`, `schemas`, `build-policy`, `pack`, `keygen`, `sign` and `verify`, with `shiba-sdk` generating contracts. Remaining: the pack loader in the app, and the open question of where shared rules code and the runner live (O-14).
 
 ### SS-02: First playable vertical slice (after the toolset is stable)
 Goal: prove the architecture end to end. Four lands per side, an `ATTACK_LAND` command, a two-creature battle with one boon/curse each, one Spellbook card, authoritative resolution, rendered in the client, and the same battle running headless in a core test.
-Repos: `shiba-sdk` (SC-), `shiba-app` (SA-).
+Repos: `shiba-sdk` (SK-), `shiba-app` (SA-).
 Status: not started.
 
 ### SS-03: Official services
@@ -23,15 +23,18 @@ Status: parked until SS-02 is proven. Decide O-12 (how MPS runs rules) first.
 
 ## Now
 
+Three decisions are waiting on the owner; nothing else is in progress.
+
+- [ ] `SH-0001` Decide where the shared rules code and the runner live (open question O-14). *(waiting on you)*
+- [ ] `SH-0002` Decide how `shiba-sdk` is distributed to other repos: git tag, private registry or packed tarball. *(waiting on you)*
+- [ ] `SH-0009` Talk through packs as single files and mod layering; decide what to build. Notes: [design/packs-and-modding.md](design/packs-and-modding.md). *(waiting on you)*
+
 ## Next
 
-- [ ] `SH-0001` Decide where the shared rules code and the runner live (open question O-14).
-- [ ] `SH-0002` Decide how `shiba-sdk` is distributed to other repos: git tag, private registry or packed tarball.
 - [ ] `SH-0003` Create one master `AGENTS.md` under `docs/engineering/` and copy it into each repo.
 
 ## Later / Ideas
 
-- [ ] `SH-0005` Talk through packs as single files and mod layering; decide what to build. Notes: [design/packs-and-modding.md](design/packs-and-modding.md).
 - [ ] `SH-0005` Decide the licence split: code, base cards, base art, premium art. (O-07)
 - [ ] `SH-0006` Set up a dev-only Flipt container plus OpenFeature adapter. (Needs package approval.)
 - [ ] `SH-0007` Playtest the siege clock length. Start at 3 turns. (O-03)
