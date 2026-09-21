@@ -37,7 +37,8 @@ Status: Draft.
 
 | Term | Meaning |
 |---|---|
-| **Runtime / SDK** (`shiba-core`) | Headless TypeScript: the API for writing a policy and the deterministic runtime that loads one. No React, Phaser, Tauri, Colyseus, database or browser APIs. |
+| **SDK** (`shiba-sdk`) | A library of helpers for *writing* a policy in a standard shape (`definePolicy`, `kind`, `hook`, `fn`, `t.*`). It holds no game rules and does not run anything. |
+| **Runner** | Code that plays a policy: runs a template's steps by calling the policy's functions. Not built. Where it lives is open (O-14). |
 | **Policy** | A game's rules as code (JS/TS), built to one bundle, versioned and signed. Written with the SDK. |
 | **Policy function** | A named, trusted function in a policy that templates can call. |
 | **Hook** | A named moment (for example a battle starting) that a template can attach steps to. Declared by the policy. |

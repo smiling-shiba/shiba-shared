@@ -5,7 +5,7 @@ Status: Draft. Reflects decisions through 2026-09-20. See [../decisions/log.md](
 ## One-page picture
 
 ```text
-shiba-core (SDK + deterministic runtime)
+shiba-sdk (helpers for writing a policy)
    |  used to write
    v
 Pack = policy (code) + templates (YAML) + assets      lives in a game's own repo
@@ -23,7 +23,7 @@ Pack = policy (code) + templates (YAML) + assets      lives in a game's own repo
 ## Rules of the road
 
 1. **Server is authoritative in every mode.** Clients send intents (`PLAY_SPELL`, `ATTACK_LAND`); the server validates and resolves. Local server, official server, Bluetooth host: same model.
-2. **The runtime is shared and generic; a game's rules are a pack.** `shiba-core` provides the SDK and a deterministic runtime. A game's rules are a signed policy (code) plus YAML templates that call the policy's functions. Nothing in a template is code.
+2. **The SDK is generic; a game's rules are a pack.** `shiba-sdk` provides the helpers for writing a policy. A game's rules are a signed policy (code) plus YAML templates that call the policy's functions. Nothing in a template is code.
 3. **Matches pin runtime and pack versions.** Hotfixes affect new matches only.
 4. **No account to play.** Clone it, play, mod it. Accounts exist for the official ecosystem only.
 5. **Open game, commercial service.** Code, base content and local server are public. Store, ladder, accounts, entitlements and premium art are private.

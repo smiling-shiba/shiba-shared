@@ -124,11 +124,11 @@ A persona = a global passive rule + a card family. Unlocking one changes how you
 - **Card hand UI:** fan/carousel of cards with the middle one magnified and glowing. Works for touch swipe and controller left/right.
 - **Bluetooth:** use BLE via a Tauri native plugin, not Web Bluetooth (no iOS Safari support). Put the game rules behind a `GameTransport` abstraction (Colyseus | Bluetooth). Local Wi-Fi nearby play is easier and should come first.
 
-**The biggest late change:** a **shared headless rules library** (`shiba-core`), used by the app (previews and local play) and by `shiba-mps`, which loads the same bundle into the BEAM and is the source of truth for official multiplayer (decision D-30). Rules therefore exist once. Design it as pure functions with explicit state in and out, injected RNG and no platform imports.
+**The biggest late change:** one **shared policy bundle**: the game's rules as a single JavaScript file, used by the app (previews and local play) and by `shiba-mps`, which loads the same file into the BEAM and is the source of truth for official multiplayer (decision D-30). Rules therefore exist once. Write them as pure functions with explicit state in and out, injected RNG and no platform imports.
 
 ## 7. Rules as data, and the Rules Lab
 
-Terminology and format follow decisions D-34 to D-36 and `shiba-core/docs/pack-format.md`.
+Terminology and format follow decisions D-34 to D-36 and `shiba-sdk/docs/pack-format.md`.
 
 - **The runtime is shared and generic; a game's rules are a versioned policy plus templates.** No rules API call per move.
 - Card effects are built from a **primitive vocabulary** (draw, discard, damage, defend, summon, resurrect, steal, claim_land, cancel, choose, inspect, move, copy, modify, compare, return_to_deck...). One-off cards can call named policy functions.

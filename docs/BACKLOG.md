@@ -7,13 +7,13 @@ Convention: [engineering/backlog-and-ids.md](engineering/backlog-and-ids.md). Ke
 ## Epics
 
 ### SS-01: Rules contract & validation
-Goal: a game's rules live in a policy (code) written with the `shiba-core` SDK; `shiba-tools` (`sht`) validates YAML templates against the policy's contract and signs packs for official use.
-Repos: `shiba-core` (SC-), `shiba-tools` (ST-).
-Status: in progress and the current focus. `sht validate` and `sht schemas` exist; contract generation exists in `shiba-core`; the rest of `sht` (`build-policy`, `pack`, `sign`, `verify`) and the runtime are pending. Uses a neutral toy domain for examples and tests, no game content.
+Goal: a game's rules live in a policy (code) written with the `shiba-sdk` SDK; `shiba-tools` (`sht`) validates YAML templates against the policy's contract and signs packs for official use.
+Repos: `shiba-sdk` (SC-), `shiba-tools` (ST-).
+Status: in progress and the current focus. `sht validate` and `sht schemas` exist; contract generation exists in `shiba-sdk`; the rest of `sht` (`build-policy`, `pack`, `sign`, `verify`) and the runtime are pending. Uses a neutral toy domain for examples and tests, no game content.
 
 ### SS-02: First playable vertical slice (after the toolset is stable)
 Goal: prove the architecture end to end. Four lands per side, an `ATTACK_LAND` command, a two-creature battle with one boon/curse each, one Spellbook card, authoritative resolution, rendered in the client, and the same battle running headless in a core test.
-Repos: `shiba-core` (SC-), `shiba-app` (SA-).
+Repos: `shiba-sdk` (SC-), `shiba-app` (SA-).
 Status: not started.
 
 ### SS-03: Official services
@@ -25,8 +25,8 @@ Status: parked until SS-02 is proven. Decide O-12 (how MPS runs rules) first.
 
 ## Next
 
-- [ ] `SH-0001` Settle the public name of the shared runtime/SDK package (`shiba-core`) and update the glossary. (Open question O-10)
-- [ ] `SH-0002` Decide how `shiba-core` is distributed to other repos: git tag, private registry or packed tarball.
+- [ ] `SH-0001` Decide where the shared rules code and the runner live (open question O-14).
+- [ ] `SH-0002` Decide how `shiba-sdk` is distributed to other repos: git tag, private registry or packed tarball.
 - [ ] `SH-0003` Create one master `AGENTS.md` under `docs/engineering/` and copy it into each repo.
 
 ## Later / Ideas

@@ -11,7 +11,7 @@ See [architecture/repos.md](architecture/repos.md) for the full map. Docs folder
 | Repo | Docs folder | Holds |
 |---|---|---|
 | `shiba-shared` | this folder | Cross-repo architecture, decisions, game design, engineering rules, future ideas |
-| `shiba-core` | `shiba-core/docs/` | SDK and deterministic runtime for policies; the pack format, contract and signing |
+| `shiba-sdk` | `shiba-sdk/docs/` | SDK and deterministic runtime for policies; the pack format, contract and signing |
 | `shiba-tools` (CLI alias `sht`) | `shiba-tools/docs/` | CLI/validator tooling only |
 | `shiba-app` | `shiba-app/docs/` | Local game: client, Tauri shell, local Colyseus server |
 | `shiba-mps` | `shiba-mps/docs/` | Elixir multiplayer server: accounts, matchmaking, seasons, registry |
@@ -30,7 +30,7 @@ See [architecture/repos.md](architecture/repos.md) for the full map. Docs folder
 |---|---|---|
 | [engineering/ground-rules.md](engineering/ground-rules.md) | Current | Copy of `ENGINEERING_GROUND_RULES.md`. Agents never commit to `main`. |
 | [BACKLOG.md](BACKLOG.md) | Current | Cross-repo work queue and epic definitions. |
-| [engineering/backlog-and-ids.md](engineering/backlog-and-ids.md) | Current | `BACKLOG.md` convention. Epics live in `shiba-shared/docs/BACKLOG.md`; stories use `SH-`, `SC-`, `ST-`, `SA-`, `MP-`. |
+| [engineering/backlog-and-ids.md](engineering/backlog-and-ids.md) | Current | `BACKLOG.md` convention. Epics live in `shiba-shared/docs/BACKLOG.md`; stories use `SH-`, `SK-`, `ST-`, `SA-`, `MP-`. |
 | [future/guide-daemon.md](future/guide-daemon.md) | Parked | Shiba Handler / tutorial system. Do not build yet. |
 
 ## Conventions

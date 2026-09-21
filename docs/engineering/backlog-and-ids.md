@@ -24,8 +24,8 @@ Goal: validate templates against a policy's contract, and sign packs.
 ## IDs
 
 - **Epics** use the product prefix: `SS-01`, `SS-02`.
-- **Repo prefixes:** `SH-` shiba-shared, `SC-` shiba-core, `ST-` shiba-tools, `SA-` shiba-app, `MP-` shiba-mps.
-- **Stories** use the repo prefix: `ST-0014` (shiba-tools, alias `sht`), `SC-0003` (shiba-core).
+- **Repo prefixes:** `SH-` shiba-shared, `SK-` shiba-sdk, `ST-` shiba-tools, `SA-` shiba-app, `MP-` shiba-mps.
+- **Stories** use the repo prefix: `ST-0014` (shiba-tools, alias `sht`), `SK-0003` (shiba-sdk).
 - IDs are zero-padded, never renumbered and never reused.
 - A story names its epic in its heading or with a `[SS-01]` tag.
 - The epic's definition lives in one repo (the product repo); other repos link to it by ID.
