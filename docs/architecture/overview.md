@@ -5,33 +5,26 @@ Status: Draft. Reflects decisions through 2026-09-20. See [../decisions/log.md](
 ## One-page picture
 
 ```text
-                 ┌──────────────────────────────┐
-                 │  shiba-core (headless rules)  │
-                 │  handlers + manifest (bundle) │
-                 └───────────────┬───────────────┘
-                                 │ built artifact
-        ┌────────────────────────┼─────────────────────────┐
-        │                        │                         │
-   shiba-tools             Client app                 Match servers
- (validates YAML          (previews only,            (authoritative)
-  against manifest)        never authority)            │
-                                 │                     ├── Local: Node + Colyseus sidecar (Tauri)
-                                 │                     └── Official: shiba-mps (Elixir) runs the core bundle in the BEAM
-                                 │                              ▲
-                                 │                              │ orchestrated by
-                                 │                     Official services (Phoenix/Elixir):
-                                 │                     accounts, matchmaking, seasons,
-                                 │                     entitlements, rules registry
-                                 │
-              Vite + React (menus/HUD/deck builder) + Phaser 4 (board/battle)
-              Tauri shell on desktop
+shiba-core (SDK + deterministic runtime)
+   |  used to write
+   v
+Pack = policy (code) + templates (YAML) + assets      lives in a game's own repo
+   |
+   +-- shiba-tools (`sht`): validate, pack, sign, verify
+   |
+   +-- shiba-app: client (Vite + React + Phaser) in a Tauri shell
+   |       +-- local server (Node + Colyseus sidecar): authoritative for local games
+   |
+   +-- shiba-mps (Elixir/Phoenix): official multiplayer
+           loads the signed policy into the BEAM; authoritative for official matches
+           also: accounts, matchmaking, seasons, entitlements, pack registry
 ```
 
 ## Rules of the road
 
 1. **Server is authoritative in every mode.** Clients send intents (`PLAY_SPELL`, `ATTACK_LAND`); the server validates and resolves. Local server, official server, Bluetooth host: same model.
-2. **Engine code is shared and boring; rules are data.** The engine implements primitives and named handlers. Cards, personas, creature boons and values are versioned YAML, compiled to canonical JSON.
-3. **Matches pin engine and ruleset versions.** Hotfixes affect new matches only.
+2. **The runtime is shared and generic; a game's rules are a pack.** `shiba-core` provides the SDK and a deterministic runtime. A game's rules are a signed policy (code) plus YAML templates that call the policy's functions. Nothing in a template is code.
+3. **Matches pin runtime and pack versions.** Hotfixes affect new matches only.
 4. **No account to play.** Clone it, play, mod it. Accounts exist for the official ecosystem only.
 5. **Open game, commercial service.** Code, base content and local server are public. Store, ladder, accounts, entitlements and premium art are private.
 6. **Mobile is later, online-only.** No local server, no executable mods, probably no overworld. Design mobile-ready now (touch-sized UI, no hover-only info, abstracted input, headless rules).
@@ -57,7 +50,7 @@ Vite + React + TypeScript + Phaser 4, packaged with Tauri 2. Oxlint. React owns 
 - **Transport:** rules sit behind a `GameConnection`/`GameTransport` boundary so Colyseus, the official service, tests and a possible Bluetooth adapter are interchangeable.
 - **Flags:** Flipt plus OpenFeature for engineering gates and emergency toggles. Local mode uses the in-memory provider. Flags never hold rules.
 - **Logging:** adapter with two backends (see overview table).
-- **Determinism:** injected RNG, no clocks or network in engine code.
+- **Determinism:** injected RNG, no clocks or network in policy or runtime code.
 - **Hidden information:** clients get a projected view of state, never the whole thing.
 
 ## Open architecture questions

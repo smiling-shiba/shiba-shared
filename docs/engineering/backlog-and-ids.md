@@ -9,11 +9,11 @@ Each repo has one `BACKLOG.md` at its root. Do not keep a second overlapping tas
 ```markdown
 # BACKLOG.md
 
-## Epic SS-01: Rules Lab & Versioned Rulesets
-Goal: edit, validate, diff and publish immutable rulesets.
+## Epic SS-01: Pack validation and signing
+Goal: validate templates against a policy's contract, and sign packs.
 
 ### Now (max 3)
-- [ ] `ST-0014` Validate handler names against the manifest
+- [ ] `ST-0014` Validate function names against the contract
 
 ### Next
 ### Later / Ideas
@@ -25,7 +25,7 @@ Goal: edit, validate, diff and publish immutable rulesets.
 
 - **Epics** use the product prefix: `SS-01`, `SS-02`.
 - **Repo prefixes:** `SH-` shiba-shared, `SC-` shiba-core, `ST-` shiba-tools, `SA-` shiba-app, `MP-` shiba-mps.
-- **Stories** use the repo prefix: `ST-0014` (shiba-tools, alias `sht`), `SC-0003` (shiba-core). The old `SRS-` prefix (from `shiba-rules-studio`) is retired; do not reuse it.
+- **Stories** use the repo prefix: `ST-0014` (shiba-tools, alias `sht`), `SC-0003` (shiba-core).
 - IDs are zero-padded, never renumbered and never reused.
 - A story names its epic in its heading or with a `[SS-01]` tag.
 - The epic's definition lives in one repo (the product repo); other repos link to it by ID.

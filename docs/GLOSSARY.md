@@ -1,6 +1,6 @@
 # Glossary
 
-Status: Draft. Terms marked **(naming open)** are not settled.
+Status: Draft.
 
 ## Game
 
@@ -8,7 +8,7 @@ Status: Draft. Terms marked **(naming open)** are not settled.
 |---|---|
 | **Land** | One of four territories on a player's half of the board. Holds one creature and belongs to a control/biome. |
 | **Homeland** | A player's original four lands. |
-| **Chain** | Lands are ordered 1 to 4. You can only attack a land adjacent to territory you hold. If a link is cut, everything held behind the cut reverts. |
+| **Chain** | Lands are ordered 1 to 4. A player can only attack a land adjacent to territory they hold. If a link is cut, everything held behind the cut reverts. |
 | **Siege clock** | X turns (start at 3) a player has to re-occupy a homeland land after all four are held by an opponent. Losing all lands is not instant death. |
 | **Army (deck)** | The creature deck. Draw 1 per turn on the strategic layer, deploy onto lands. |
 | **Spellbook** | The tactical deck of spells and abilities. Draw 5-7 when a land is attacked. |
@@ -28,7 +28,7 @@ Status: Draft. Terms marked **(naming open)** are not settled.
 
 | Term | Meaning |
 |---|---|
-| **Local / Custom mode** | Player-owned server, no account, mods allowed, cheating is the owner's problem. |
+| **Local / Custom mode** | Player-owned server, no account, mods allowed, cheating is the host's own concern. |
 | **Ladder / Official mode** | Official server owns cards, decks, RNG and rewards. Account required. No mods. |
 | **Season** | A themed content package: persona, biome, campaign, ladder, progression. Ends; entitlements remain. |
 | **Entitlement** | An account's right to use something (persona, cosmetic). Separate from season availability. |
@@ -37,13 +37,17 @@ Status: Draft. Terms marked **(naming open)** are not settled.
 
 | Term | Meaning |
 |---|---|
-| **Engine / core** | Headless TypeScript rules code (`shiba-core`). No React, Phaser, Tauri, Colyseus, DB or browser APIs. **(naming open: "engine", "core", "game-core")** |
-| **Handler (function)** | A named, trusted TS function in the engine bundle that a YAML rule can call. Not the mascot. **(naming open, collides with Handler above)** |
-| **Rules Profile** | The compiled engine artifact: bundle JS plus manifest plus API schema. What `sht` validates against. **(naming open)** |
-| **Manifest / API schema** | Generated description of the handlers, hooks and argument schemas the bundle offers. `sht` reads this, never the JS source. |
-| **Ruleset** | Declarative YAML content (cards, personas, creatures, values) that references handlers by name. Compiled to canonical JSON, hashed, versioned, immutable once published. |
-| **Match pin** | A match records its engine version and ruleset version and never changes them. |
-| **Rules registry** | Official backend database of ruleset versions and their status (draft, active, deprecated, disabled, emergency_blocked). |
+| **Runtime / SDK** (`shiba-core`) | Headless TypeScript: the API for writing a policy and the deterministic runtime that loads one. No React, Phaser, Tauri, Colyseus, database or browser APIs. |
+| **Policy** | A game's rules as code (JS/TS), built to one bundle, versioned and signed. Written with the SDK. |
+| **Policy function** | A named, trusted function in a policy that templates can call. |
+| **Hook** | A named moment (for example a battle starting) that a template can attach steps to. Declared by the policy. |
+| **Kind** | A type of template (for example `entity`), declared by the policy along with the fields it accepts. |
+| **Template** | A YAML file describing one object of some kind. Holds data and calls to policy functions, never code. |
+| **Asset** | Art, audio or other files that templates refer to. |
+| **Pack** | A policy plus its templates and assets. What `shiba-app` loads. |
+| **Contract** (`contract.json`) | Generated from a policy: its kinds, functions, hooks and argument schemas. `sht` reads this, never the policy source. |
+| **Match pin** | A match records its runtime version and pack version and never changes them. |
+| **Pack registry** | Official backend database of pack versions and their status (draft, active, deprecated, disabled, emergency_blocked). |
 | **Feature flag** | An on/off switch for engineering gates and emergency toggles. Not a place for rules. |
 | **Rules toggle** | A flag that disables a card, persona or queue. Short-lived. |
 | **Sidecar** | Node process (Colyseus) that the Tauri desktop app launches as the local server. |

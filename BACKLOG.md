@@ -7,11 +7,11 @@ Convention: [docs/engineering/backlog-and-ids.md](docs/engineering/backlog-and-i
 ## Epics
 
 ### SS-01: Rules contract & validation
-Goal: rules logic lives in `shiba-core` as named handlers; `shiba-tools` (`sht`) validates YAML rulesets against the manifest it emits, and signs for official use.
+Goal: a game's rules live in a policy (code) written with the `shiba-core` SDK; `shiba-tools` (`sht`) validates YAML templates against the policy's contract and signs packs for official use.
 Repos: `shiba-core` (SC-), `shiba-tools` (ST-).
-Status: not started.
+Status: in progress and the current focus. `sht validate` and `sht schemas` exist; contract generation in `shiba-core` and the rest of `sht` are pending. Uses a neutral toy domain for examples and tests, no game content.
 
-### SS-02: First playable vertical slice
+### SS-02: First playable vertical slice (after the toolset is stable)
 Goal: prove the architecture end to end. Four lands per side, an `ATTACK_LAND` command, a two-creature battle with one boon/curse each, one Spellbook card, authoritative resolution, rendered in the client, and the same battle running headless in a core test.
 Repos: `shiba-core` (SC-), `shiba-app` (SA-).
 Status: not started.
@@ -25,10 +25,9 @@ Status: parked until SS-02 is proven. Decide O-12 (how MPS runs rules) first.
 
 ## Next
 
-- [ ] `SH-0001` Resolve naming: engine vs core vs Rules Profile; handler (function) vs Handler (mascot). Update the glossary. (Open question O-10)
+- [ ] `SH-0001` Settle the public name of the shared runtime/SDK package (`shiba-core`) and update the glossary. (Open question O-10)
 - [ ] `SH-0002` Decide how `shiba-core` is distributed to other repos: git tag, private registry or packed tarball.
 - [ ] `SH-0003` Create one master `AGENTS.md` under `docs/engineering/` and copy it into each repo.
-- [ ] `SH-0004` Review the remaining generated docs still in Downloads (`bootstrap-prompt`, `cardworld-stack-setup`) and file or archive them.
 
 ## Later / Ideas
 

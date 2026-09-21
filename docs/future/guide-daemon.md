@@ -963,7 +963,7 @@ packages/
     intervention-resolution/
 
 apps/
-  rules-studio/
+  tools/
     guide-editor/
     hook-inspector/
     dialogue-preview/
@@ -975,9 +975,9 @@ The separation is.
 
 ---
 
-# 24. Rules Studio integration
+# 24. Tooling integration
 
-Eventually, Rules Studio should gain a guide authoring surface.
+Eventually, the tooling (`sht`) could gain guide-pack validation and authoring support.
 
 Possible screen:
 
@@ -1054,7 +1054,7 @@ The hook registry can then power:
 - validation,
 - documentation,
 - Monaco autocomplete,
-- Rules Studio help,
+- editor help,
 - compatibility checks,
 - test fixtures,
 - and community reference documentation.
