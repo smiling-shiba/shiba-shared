@@ -124,7 +124,7 @@ A persona = a global passive rule + a card family. Unlocking one changes how you
 - **Card hand UI:** fan/carousel of cards with the middle one magnified and glowing. Works for touch swipe and controller left/right.
 - **Bluetooth:** use BLE via a Tauri native plugin, not Web Bluetooth (no iOS Safari support). Put the game rules behind a `GameTransport` abstraction (Colyseus | Bluetooth). Local Wi-Fi nearby play is easier and should come first.
 
-**The biggest late change:** one **shared policy bundle**: the game's rules as a single JavaScript file, used by the app (previews and local play) and by `shiba-mps`, which loads the same file into the BEAM and is the source of truth for official multiplayer (decision D-30). Rules therefore exist once. Write them as pure functions with explicit state in and out, injected RNG and no platform imports.
+**The biggest late change:** the game's rules for local play live in one **policy bundle**: a single JavaScript file used by the app (previews and local play) and by the local server. The ladder is a separate, private world: `shiba-mps` runs its own rules in Elixir, which may differ and change often (decision D-42). Write the public rules as pure functions with explicit state in and out, injected RNG and no platform imports.
 
 ## 7. Rules as data, and the Rules Lab
 

@@ -55,4 +55,4 @@ Vite + React + TypeScript + Phaser 4, packaged with Tauri 2. Oxlint. React owns 
 
 ## Open architecture questions
 
-See D-open entries in [../decisions/log.md](../decisions/log.md). The biggest: how `shiba-mps` hosts the JS runtime (O-12, decided direction D-30).
+See D-open entries in [../decisions/log.md](../decisions/log.md). The biggest: the public policy and the private ladder rules are separate on purpose (D-42).

@@ -21,7 +21,7 @@ Status: Idea, to discuss. Nothing here is decided or built beyond "Where we are"
 ## Related
 
 - Pack loader in the app (`SA-0013`), key rotation and revocation and the app-side verify (`ST-0017`, `ST-0018`).
-- Where the shared rules code and the runner live (O-14).
+- The runner lives in `shiba-app` (D-42).
 - Custom games never send their pack to `shiba-mps` (D-31).
 
 ## Questions for later

@@ -38,7 +38,7 @@ Status: Draft.
 | Term | Meaning |
 |---|---|
 | **SDK** (`shiba-sdk`) | A library of helpers for *writing* a policy in a standard shape (`definePolicy`, `kind`, `hook`, `fn`, `t.*`). It holds no game rules and does not run anything. |
-| **Runner** | Code that plays a policy: runs a template's steps by calling the policy's functions. Not built. Where it lives is open (O-14). |
+| **Runner** | Code that plays a policy: runs a template's steps by calling the policy's functions. Not built. It lives in `shiba-app` and runs policies for local play. The ladder server has its own rules in Elixir and does not use it (D-42). |
 | **Policy** | A game's rules as code (JS/TS), built to one bundle, versioned and signed. Written with the SDK. |
 | **Policy function** | A named, trusted function in a policy that templates can call. |
 | **Hook** | A named moment (for example a battle starting) that a template can attach steps to. Declared by the policy. |
