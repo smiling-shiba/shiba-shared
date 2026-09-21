@@ -39,6 +39,7 @@ Three decisions are waiting on the owner; nothing else is in progress.
 - [ ] `SH-0006` Set up a dev-only Flipt container plus OpenFeature adapter. (Needs package approval.)
 - [ ] `SH-0007` Playtest the siege clock length. Start at 3 turns. (O-03)
 - [ ] `SH-0008` Prototype the fan/carousel hand UI on one throwaway screen.
+- [ ] `SH-0009` Parked idea: translate a policy from JavaScript to Elixir before the server starts (a Mix task that skips when the policy version is unchanged), to remove the embedded JS engine as a speed limit. Not planned. It would give the server a second implementation of the rules and break "one policy file, same everywhere" (D-30), and JavaScript is hard to copy exactly. Measured so far: about 6 ms per round of rules over 4,000 objects, 3 to 4 times slower than V8, one thread per match (`shiba-mps` `MP-0001`). Try first: write rules that touch less state, or swap the engine for a Node worker pool (the O-12 fallback). Revisit only if a real game's rules make QuickBEAM the bottleneck.
 
 ## Blocked
 
