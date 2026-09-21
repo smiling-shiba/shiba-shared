@@ -9,7 +9,7 @@ Convention: [engineering/backlog-and-ids.md](engineering/backlog-and-ids.md). Ke
 ### SS-01: Rules contract & validation
 Goal: a game's rules live in a policy (code) written with the `shiba-sdk` SDK; `shiba-tools` (`sht`) validates YAML templates against the policy's contract and signs packs for official use.
 Repos: `shiba-sdk` (SC-), `shiba-tools` (ST-).
-Status: in progress and the current focus. `sht validate` and `sht schemas` exist; contract generation exists in `shiba-sdk`; the rest of `sht` (`build-policy`, `pack`, `sign`, `verify`) and the runtime are pending. Uses a neutral toy domain for examples and tests, no game content.
+Status: in progress and the current focus. The toolset is built and tested: `sht validate`, `schemas`, `build-policy`, `pack`, `keygen`, `sign` and `verify`, with `shiba-sdk` generating contracts. Remaining: the pack loader in the app, and the open question of where shared rules code and the runner live (O-14).
 
 ### SS-02: First playable vertical slice (after the toolset is stable)
 Goal: prove the architecture end to end. Four lands per side, an `ATTACK_LAND` command, a two-creature battle with one boon/curse each, one Spellbook card, authoritative resolution, rendered in the client, and the same battle running headless in a core test.

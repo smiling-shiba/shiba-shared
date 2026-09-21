@@ -19,7 +19,7 @@ Status values: **Decided**, **Leaning**, **Open**, **Rejected**.
 | D-11 | Templates are authored in YAML, canonicalized to JSON and hashed | Decided | Human-friendly source, deterministic artifact. |
 | D-12 | No code in templates; they call named functions declared by the policy | Decided | Policy functions are trusted code; templates stay data. See `shiba-sdk/docs/pack-format.md`. |
 | D-13 | `sht` validates against the policy's contract, not by reading bundle source | Decided | Keeps the tooling independent of policy code, which is executable. |
-| D-14 | The policy (and, for the official ladder, the whole pack) is signed | Leaning | Provenance and integrity. Not required for local mode. |
+| D-14 | The pack is signed as a whole (see D-38) | Decided | Provenance and integrity. Not required for local mode. |
 | D-15 | Feature flags: Flipt + OpenFeature; local mode uses in-memory provider | Leaning | Used for dev gates and emergency toggles. |
 | D-16 | Flags never hold rules; policies and templates do | Decided | Reproducibility trail. |
 | D-17 | Logging: local `logs.sqlite`; official structured JSON to stdout | Leaning | Same `log(event, data)` adapter. |
@@ -40,6 +40,7 @@ Status values: **Decided**, **Leaning**, **Open**, **Rejected**.
 | D-35 | Pack layout: `policies/` (versioned, one active), `templates/` (YAML), `assets/`. Templates may call policy functions by name with arguments and never contain code; `sht` validates function names, arguments and kind fields against the policy's generated `contract.json`. | Decided | Design doc: `shiba-sdk/docs/pack-format.md` (Proposal). |
 | D-36 | Policies and packs use generated calver `YYYY.MM.DD.N`; the SDK (`shiba-sdk`) stays semver. Unknown template fields are rejected. One active policy per pack, found by name in `policies/`. Assets referenced by relative path. One generated `contract.json` per policy. Hot reload wanted later. | Decided | Detail in `shiba-sdk/docs/pack-format.md` section 10. Trusted-key folder and TypeBox for schemas are Leaning. |
 | D-37 | `sht build-policy` bundles a policy with esbuild into one minified, platform-neutral ES module, and reads its contract by loading the bundle in a separate Node process (`policy.contract(...)`). `shiba-tools` does not depend on `shiba-sdk`. | Decided | esbuild approved 2026-09-20. Host imports are rejected; a heuristic scan warns about non-deterministic APIs. See `shiba-tools/docs/build-policy.md`. |
+| D-38 | A pack is locked and signed as a whole: `pack.lock.json` lists every file with its hash (YAML and JSON in canonical form, so comments and formatting do not matter), and `pack.sig.json` holds an ed25519 signature over the canonical lock, with the public key included. Trust is a separate step: `sht verify --trust <keys>`. Unsigned packs pass with a warning unless `--require-signature`. | Decided | Built in `shiba-tools` with Node's crypto, no new packages. Supersedes the policy-only signature idea in D-14. Key rotation and revocation are not built. See `shiba-tools/docs/signing.md`. |
 | D-23 | Layered flag overrides via OpenFeature Multi-Provider | Rejected | More machinery than a card game needs. |
 | D-24 | Forking React or Phaser for input | Rejected | Use adapters or split input by mode. |
 | D-25 | PostHog / GrowthBook / Unleash for self-hosting | Rejected | Too heavy or enterprise-oriented. |
