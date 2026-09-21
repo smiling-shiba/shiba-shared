@@ -41,7 +41,7 @@ Each repo stands alone with its own lockfile and CI. Consequences to plan for:
 - **Keep the shared surface small.** Protocol types and command/event schemas live inside `shiba-core` rather than in a fourth repo. Input abstractions stay in the client.
 - **Version pinning is the coordination tool.** Matches already pin runtime and pack versions, so cross-repo version discipline is part of the design.
 - **Local development across repos** needs a linking step (`npm link`, or a `file:` dependency) while changing core and a consumer together. Document the exact steps in `shiba-app` when it has code.
-- **Docs and IDs:** cross-repo docs stay in `shiba-shared`; each repo owns its `BACKLOG.md` and story prefix.
+- **Docs and IDs:** cross-repo docs stay in `shiba-shared`; each repo owns its `docs/BACKLOG.md` and story prefix.
 
 Revisit only if the linking and release overhead becomes the main source of pain.
 

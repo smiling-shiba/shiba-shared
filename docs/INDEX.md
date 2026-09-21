@@ -29,7 +29,8 @@ See [architecture/repos.md](architecture/repos.md) for the full map. Docs folder
 | Doc | Status | Notes |
 |---|---|---|
 | [engineering/ground-rules.md](engineering/ground-rules.md) | Current | Copy of `ENGINEERING_GROUND_RULES.md`. Agents never commit to `main`. |
-| [engineering/backlog-and-ids.md](engineering/backlog-and-ids.md) | Current | `BACKLOG.md` convention. Epics live in `shiba-shared/BACKLOG.md`; stories use `SH-`, `SC-`, `ST-`, `SA-`, `MP-`. |
+| [BACKLOG.md](BACKLOG.md) | Current | Cross-repo work queue and epic definitions. |
+| [engineering/backlog-and-ids.md](engineering/backlog-and-ids.md) | Current | `BACKLOG.md` convention. Epics live in `shiba-shared/docs/BACKLOG.md`; stories use `SH-`, `SC-`, `ST-`, `SA-`, `MP-`. |
 | [future/guide-daemon.md](future/guide-daemon.md) | Parked | Shiba Handler / tutorial system. Do not build yet. |
 
 ## Conventions

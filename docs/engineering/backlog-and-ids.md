@@ -4,7 +4,7 @@ Status: Proposal.
 
 ## Files
 
-Each repo has one `BACKLOG.md` at its root. Do not keep a second overlapping task file, because two files drift.
+Each repo has one `BACKLOG.md`, in its `docs/` folder. Do not keep a second overlapping task file, because two files drift.
 
 ```markdown
 # BACKLOG.md

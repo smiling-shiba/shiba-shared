@@ -1,8 +1,8 @@
 # BACKLOG.md (shiba-shared)
 
-Story prefix: `SH-`. This repo holds the **epic definitions** for the whole Smiling Shiba universe (`SS-NN`) plus cross-repo and documentation stories. Other repos keep their own `BACKLOG.md` and tag stories with an epic ID.
+Story prefix: `SH-`. This repo holds the **epic definitions** for the whole Smiling Shiba universe (`SS-NN`) plus cross-repo and documentation stories. Other repos keep their own `docs/BACKLOG.md` and tag stories with an epic ID.
 
-Convention: [docs/engineering/backlog-and-ids.md](docs/engineering/backlog-and-ids.md). Keep "Now" to 3 items or fewer.
+Convention: [engineering/backlog-and-ids.md](engineering/backlog-and-ids.md). Keep "Now" to 3 items or fewer.
 
 ## Epics
 
