@@ -25,7 +25,6 @@ Status: started. The Phoenix API scaffold exists (`MP-0002`, `MP-0003`); the res
 
 Two decisions are waiting on the owner; nothing else is in progress.
 
-- [ ] `SH-0002` Decide how `shiba-sdk` is distributed to other repos: git tag, private registry or packed tarball. *(waiting on you)*
 - [ ] `SH-0009` Talk through packs as single files and mod layering; decide what to build. Notes: [design/packs-and-modding.md](design/packs-and-modding.md). *(waiting on you)*
 
 ## Next
@@ -44,8 +43,11 @@ Two decisions are waiting on the owner; nothing else is in progress.
 
 ## Blocked
 
+- [ ] Publishing `shiba-sdk` to npm (D-44) is blocked on creating the `smiling-shiba` npm Organization at npmjs.com/org/create (owner-only step, cannot be automated).
+
 ## Done (recent)
 
+- [x] `SH-0002` Decide how `shiba-sdk` is distributed to other repos. Answer (D-44): the public npm registry, as `@smiling-shiba/sdk`, published from CI via OIDC trusted publishing. Blocked on creating the npm org (see Blocked).
 - [x] `SH-0010` Connect the repos to GitHub, under the `smiling-shiba` org. Public: `shiba-shared`, `shiba-sdk`, `shiba-tools`, `shiba-app`. Private: `shiba-mps` (D-02, D-29). Each has `main` branch protection: no direct pushes (`enforce_admins` on, applies to the owner too), pull request required, no formal required-approval count — the merge click is the approval, since a required review could never be satisfied when every push goes through the owner's own GitHub account.
 - [x] `SH-0011` GitHub Actions for each repo. `shiba-sdk` and `shiba-tools`: lint, typecheck and tests on Node 24. `shiba-mps`: `mix test` with a Postgres service (Erlang 29.1, Elixir 1.20.4, Postgres 17). All three green. Signing in CI and the Docker image are not built yet.
 - [x] `SH-0005` Decide the licence split (O-07). Answer (D-43): code is MIT; base cards, base art and premium art stay closed for now.
