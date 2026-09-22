@@ -31,15 +31,21 @@ Two decisions are waiting on the owner; nothing else is in progress.
 ## Next
 
 - [ ] `SH-0003` Create one master `AGENTS.md` under `docs/engineering/` and copy it into each repo.
+- [ ] `SH-0010` Connect the repos to GitHub: create the remotes, push, and set which repos are public and which are private (`shiba-mps` stays private, D-02, D-29). Decide the default branch rules (no direct pushes to `main`, pull requests only).
 
 ## Later / Ideas
 
+- [ ] `SH-0012` Talk through giving Claude visibility into your GitHub: what it may read, what it may change, and how access is granted. Not now. Do after `SH-0010`.
+- [ ] `SH-0013` Secrets behind a small interface. Start with GitHub Secrets for CI and plain environment variables at run time, but write code against one small "get a secret" interface so the provider can be swapped later (Vault, a cloud manager). No cloud secret manager for now. Note: GitHub Secrets cannot be read back once saved, and only reach a workflow as environment variables. The real signing key lives in CI only (D-38). Decide the interface before the first real secret is added.
+- [ ] `SH-0014` Event tracking and logs behind small interfaces, plug and play, so vendors can be swapped without touching game code. Builds on the `log(event, data)` adapter (D-17) and on open question O-09 (which library and vendor). Flags already sit behind OpenFeature (D-15). Decide before the first vendor is added.
 - [ ] `SH-0005` Decide the licence split: code, base cards, base art, premium art. (O-07)
 - [ ] `SH-0006` Set up a dev-only Flipt container plus OpenFeature adapter. (Needs package approval.)
 - [ ] `SH-0007` Playtest the siege clock length. Start at 3 turns. (O-03)
 - [ ] `SH-0008` Prototype the fan/carousel hand UI on one throwaway screen.
 
 ## Blocked
+
+- [ ] `SH-0011` GitHub Actions for each repo. Blocked on `SH-0010`. `shiba-tools` and `shiba-sdk`: lint, typecheck and tests on Node 24. `shiba-mps`: `mix test` with a Postgres service, and later the Docker image (`MP-0013`). Signing runs here only, with the key in GitHub Secrets (D-38, `SH-0013`).
 
 ## Done (recent)
 

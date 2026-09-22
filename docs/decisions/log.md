@@ -61,6 +61,6 @@ Status values: **Decided**, **Leaning**, **Open**, **Rejected**.
 | O-06 | Flag snapshot per match versus live re-read | Leaning: snapshot plus an emergency-kill flag that overrides. |
 | O-07 | Licensing split: code, base cards, base art, premium art | Decide early. |
 | O-08 | Guest ladder play without an account | Later product decision. |
-| O-09 | Logging library and event-tracking vendor | |
+| O-09 | Logging library and event-tracking vendor | Both go behind small swappable interfaces (`SH-0014`). Secrets get the same treatment (`SH-0013`). |
 | O-10 | Public package name of `shiba-sdk` | Only matters once another repo installs it. Keep `shiba-sdk` for now. |
 | O-11 | Does the Shandalar-style overworld survive next to the four-lands game? | May become a campaign layer. |
