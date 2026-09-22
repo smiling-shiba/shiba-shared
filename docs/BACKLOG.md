@@ -19,7 +19,7 @@ Status: not started.
 ### SS-03: Official services
 Goal: accounts, matchmaking, seasons, entitlements and the rules registry.
 Repos: `shiba-mps` (MP-).
-Status: parked until SS-02 is proven. The server's rules are its own, written in Elixir later (D-42). The QuickBEAM spike is finished and kept as findings.
+Status: started. The Phoenix API scaffold exists (`MP-0002`, `MP-0003`); the rest waits until SS-02 is proven. The server's rules are its own, written in Elixir later (D-42). The QuickBEAM spike is finished and kept as findings.
 
 ## Now
 
