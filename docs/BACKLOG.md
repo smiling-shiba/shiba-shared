@@ -25,13 +25,11 @@ Status: started. The Phoenix API scaffold exists (`MP-0002`, `MP-0003`); the res
 
 Two decisions are waiting on the owner; nothing else is in progress.
 
-- [ ] `SH-0002` Decide how `shiba-sdk` is distributed to other repos: git tag, private registry or packed tarball. *(waiting on you)*
 - [ ] `SH-0009` Talk through packs as single files and mod layering; decide what to build. Notes: [design/packs-and-modding.md](design/packs-and-modding.md). *(waiting on you)*
 
 ## Next
 
 - [ ] `SH-0003` Create one master `AGENTS.md` under `docs/engineering/` and copy it into each repo.
-- [ ] `SH-0010` Connect the repos to GitHub, under the `smiling-shiba` org. Public: `shiba-shared`, `shiba-sdk`, `shiba-tools`, `shiba-app`. Private: `shiba-mps` (D-02, D-29). Each gets `main` branch protection: require a pull request before merging (no direct pushes, `enforce_admins` on so this applies to the owner too), no formal required-approval count. Decided 2026-09-21: since every push goes through the owner's own GitHub account, GitHub will not let a required approval be satisfied (you cannot approve your own PR), so the merge click itself is the approval, not a separate review step.
 
 ## Later / Ideas
 
@@ -41,13 +39,17 @@ Two decisions are waiting on the owner; nothing else is in progress.
 - [ ] `SH-0006` Set up a dev-only Flipt container plus OpenFeature adapter. (Needs package approval.)
 - [ ] `SH-0007` Playtest the siege clock length. Start at 3 turns. (O-03)
 - [ ] `SH-0008` Prototype the fan/carousel hand UI on one throwaway screen.
+- [ ] `SH-0015` Publish `shiba-shared/docs/` as a GitHub Pages site, so the docs are browsable without digging into the repo. Static build from Markdown (a generator like Docusaurus or mdBook, or plain GitHub Pages Markdown rendering); keep `docs/` as the source of truth, not a copy.
 
 ## Blocked
 
-- [ ] `SH-0011` GitHub Actions for each repo. Blocked on `SH-0010`. `shiba-tools` and `shiba-sdk`: lint, typecheck and tests on Node 24. `shiba-mps`: `mix test` with a Postgres service, and later the Docker image (`MP-0013`). Signing runs here only, with the key in GitHub Secrets (D-38, `SH-0013`).
+- [ ] Publishing `shiba-sdk` to npm (D-44) is blocked on creating the `smiling-shiba` npm Organization at npmjs.com/org/create (owner-only step, cannot be automated).
 
 ## Done (recent)
 
+- [x] `SH-0002` Decide how `shiba-sdk` is distributed to other repos. Answer (D-44): the public npm registry, as `@smiling-shiba/sdk`, published from CI via OIDC trusted publishing. Blocked on creating the npm org (see Blocked).
+- [x] `SH-0010` Connect the repos to GitHub, under the `smiling-shiba` org. Public: `shiba-shared`, `shiba-sdk`, `shiba-tools`, `shiba-app`. Private: `shiba-mps` (D-02, D-29). Each has `main` branch protection: no direct pushes (`enforce_admins` on, applies to the owner too), pull request required, no formal required-approval count — the merge click is the approval, since a required review could never be satisfied when every push goes through the owner's own GitHub account.
+- [x] `SH-0011` GitHub Actions for each repo. `shiba-sdk` and `shiba-tools`: lint, typecheck and tests on Node 24. `shiba-mps`: `mix test` with a Postgres service (Erlang 29.1, Elixir 1.20.4, Postgres 17). All three green. Signing in CI and the Docker image are not built yet.
 - [x] `SH-0005` Decide the licence split (O-07). Answer (D-43): code is MIT; base cards, base art and premium art stay closed for now.
 
 - [x] `SH-0001` Decide where the shared rules code and the runner live (O-14). Answer (D-42): no shared rules code. The app owns its runner, and the ladder server has its own rules in Elixir.
