@@ -31,7 +31,7 @@ Two decisions are waiting on the owner; nothing else is in progress.
 ## Next
 
 - [ ] `SH-0003` Create one master `AGENTS.md` under `docs/engineering/` and copy it into each repo.
-- [ ] `SH-0010` Connect the repos to GitHub: create the remotes, push, and set which repos are public and which are private (`shiba-mps` stays private, D-02, D-29). Decide the default branch rules (no direct pushes to `main`, pull requests only).
+- [ ] `SH-0010` Connect the repos to GitHub, under the `smiling-shiba` org. Public: `shiba-shared`, `shiba-sdk`, `shiba-tools`, `shiba-app`. Private: `shiba-mps` (D-02, D-29). Each gets `main` branch protection: require a pull request before merging (no direct pushes, `enforce_admins` on so this applies to the owner too), no formal required-approval count. Decided 2026-09-21: since every push goes through the owner's own GitHub account, GitHub will not let a required approval be satisfied (you cannot approve your own PR), so the merge click itself is the approval, not a separate review step.
 
 ## Later / Ideas
 
