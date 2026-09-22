@@ -38,6 +38,7 @@ Nothing is waiting on the owner right now.
 - [ ] `SH-0007` Playtest the siege clock length. Start at 3 turns. (O-03)
 - [ ] `SH-0008` Prototype the fan/carousel hand UI on one throwaway screen.
 - [ ] `SH-0015` Publish `shiba-shared/docs/` as a GitHub Pages site, so the docs are browsable without digging into the repo. Static build from Markdown (a generator like Docusaurus or mdBook, or plain GitHub Pages Markdown rendering); keep `docs/` as the source of truth, not a copy.
+- [ ] `SH-0016` Deck builder is game content, not platform — build it after the Shiba platform is ready for release and a custom game exists on it. Ship it as a mod dropped into `shiba-app`, not first-party platform code, as a real proof of the mod system (D-45). Likely needs whatever comes out of `shiba-app`'s `SA-0015` (customizable UI): a deck builder is mostly UI, not data, so pure content-mod layering (templates/assets) may not be enough on its own.
 
 ## Blocked
 
